@@ -3,7 +3,7 @@ from tkinter import Button, PhotoImage, ttk
 from tkinter import messagebox
 import cadastro
 import esquec_senha
-import tela01
+
 
 janela = tk.Tk()
 
@@ -19,8 +19,10 @@ def verificar_login():
 
     if usuario == "adm" and senha == "123456":
         messagebox.showinfo("Sucesso!", "Login realizado com sucesso")
-        tela01.tela_01()
+        import tela01
         janela.destroy()
+        tela01.tela_01()
+        
 
     else:
         messagebox.showerror("Erro", "Usuario incorreto!")
