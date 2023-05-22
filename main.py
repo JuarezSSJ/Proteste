@@ -3,6 +3,7 @@ from tkinter import Button, PhotoImage, ttk
 from tkinter import messagebox
 import cadastro
 import esquec_senha
+from view import *
 
 
 janela = tk.Tk()
@@ -17,7 +18,8 @@ def verificar_login():
     usuario = caixa_texto_usuario.get("1.0", "end-1c")
     senha = caixa_texto_senha.get("1.0", "end-1c")
 
-    if usuario == "adm" and senha == "123456":
+    verificar = verificar_cadastro(usuario, senha)
+    if verificar == True:
         messagebox.showinfo("Sucesso!", "Login realizado com sucesso")
         import tela01
         janela.destroy()
@@ -25,8 +27,8 @@ def verificar_login():
         
 
     else:
-        messagebox.showerror("Erro", "Usuario incorreto!")
-
+        messagebox.showerror("Erro", "Usuario ou Senha incorreto!")
+    
 
 # backgraud
 imagem = PhotoImage(file="img//3.png")
