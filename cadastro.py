@@ -4,7 +4,6 @@ from tkinter import messagebox
 from view import *
 
 
-
 def cadastro(caixa_texto_usuario, caixa_texto_nome, caixa_texto_senha, caixa_texto_email, caixa_texto_cpf):
     tabela = "tb_login"
     usuario = caixa_texto_usuario.get("1.0", "end-1c")
@@ -14,7 +13,7 @@ def cadastro(caixa_texto_usuario, caixa_texto_nome, caixa_texto_senha, caixa_tex
     cpf = caixa_texto_cpf.get("1.0", "end-1c")
 
     lista_campos = tb_login_vars
-    #['nome', 'cpf', 'email', 'login', 'senha']
+    # ['nome', 'cpf', 'email', 'login', 'senha']
     lista_campos_preenchidos = [nome, cpf, email, usuario, senha]
 
     if cpf == " " and usuario == " ":
@@ -59,7 +58,7 @@ def novo_cadastro():
     labelusuario.place(relx=valorx, rely=valory, relwidth=.15, relheight=.06)
 
     caixa_texto_usuario = tk.Text(
-        janela_cadastro, width=5, height=5, bg="#6BD4CD",wrap="none",font=("Arial", 12))
+        janela_cadastro, width=5, height=5, bg="#6BD4CD", wrap="none", font=("Arial", 12))
     caixa_texto_usuario.place(
         relx=valorx+0.15, rely=valory, relwidth=largcampo, relheight=.06)
 
@@ -109,7 +108,8 @@ def novo_cadastro():
     # botão de salvar
     # criar função insert no banco
     botao_cadastrar = Button(janela_cadastro, text="Cadastrar",
-                             command=lambda: cadastro(caixa_texto_usuario, caixa_texto_nome, caixa_texto_senha, caixa_texto_email, caixa_texto_cpf), 
+                             command=lambda: cadastro(
+                                 caixa_texto_usuario, caixa_texto_nome, caixa_texto_senha, caixa_texto_email, caixa_texto_cpf),
                              width=10, height=5, bg="#6BD4CD")
     botao_cadastrar.place(relx=valorx+.2, rely=valory+.5,
                           relwidth=.20, relheight=.06)
