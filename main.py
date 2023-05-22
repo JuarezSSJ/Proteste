@@ -85,7 +85,7 @@ botao_acessar.place(relx=valorx, rely=0.74, relwidth=.10, relheight=.06)
 # botão de esqueci a senha
 
 botao_esqueci_senha = Button(
-    text="Esqueci a senha", command=esquec_senha.esqueci_senha, width=10, height=5, bg="#6BD4CD")
+    text="Esqueci a senha", command=esquec_senha.esqueci_a_senha, width=10, height=5, bg="#6BD4CD")
 botao_esqueci_senha.place(relx=valorx, rely=0.81, relwidth=.25, relheight=.03)
 
 # botão cadastro

@@ -27,7 +27,6 @@ def cadastro(caixa_texto_usuario, caixa_texto_nome, caixa_texto_senha, caixa_tex
         caixa_texto_senha.delete('1.0', 'end')
         caixa_texto_email.delete('1.0', 'end')
         caixa_texto_cpf.delete('1.0', 'end')
-    novo_cadastro.destroy()
 
 
 def novo_cadastro():

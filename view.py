@@ -43,6 +43,20 @@ def verificar_cadastro(login, senha):
             # O usuário e senha não estão cadastrados
             return False
 
+def esqueci_senha(email, cpf):
+    with conexao:
+        cur = conexao.cursor()
+        query = "SELECT * FROM tb_login WHERE email = ? AND cpf = ?"
+        cur.execute(query, (email, cpf))
+        resultado = cur.fetchone()
+
+        if resultado is not None:
+            # O usuário e senha estão cadastrados
+            return True
+        else:
+            # O usuário e senha não estão cadastrados
+            return False
+
 
 # acessar informações
 def apresentar_info():
