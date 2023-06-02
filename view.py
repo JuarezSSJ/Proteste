@@ -11,7 +11,7 @@ import sqlite3
 conexao = sqlite3.connect("db_proteste.db")
 
 
-# função cadastrar  
+# função cadastrar
 def cadastrar_info(table, campos_tabela, inf):
     with conexao:
         cur = conexao.cursor()
@@ -29,6 +29,7 @@ def cadastrar_info(table, campos_tabela, inf):
         # comando para executar o query
         cur.execute(query, inf)
 
+
 def verificar_cadastro(login, senha):
     with conexao:
         cur = conexao.cursor()
@@ -42,6 +43,7 @@ def verificar_cadastro(login, senha):
         else:
             # O usuário e senha não estão cadastrados
             return False
+
 
 def esqueci_senha(email, cpf):
     with conexao:
@@ -59,19 +61,18 @@ def esqueci_senha(email, cpf):
 
 
 # acessar informações
-def apresentar_info():
+def apresentar_info(tabela):
     lista_apresentar = []
     with conexao:
         cur = conexao.cursor()
         # * - sig tudo
-        query = "SELECT * FROM formulario"
+        query = f"SELECT * FROM {tabela}"
         cur.execute(query)
         info = cur.fetchall()
-        #corre toda a lista da info e mandar para a lista_apresentar
+        # corre toda a lista da info e mandar para a lista_apresentar
         for i in info:
             lista_apresentar.append(i)
     return lista_apresentar
-
 
 
 # função atualizar
@@ -80,7 +81,6 @@ def atualizar_info(i):
         cur = conexao.cursor()
         query = "UPDATE formulario SET nome=?, email=?, telefone=?, data_consulta=?, situacao=?, observacao=? WHERE id=?"
         cur.execute(query, i)
-
 
 
 # função deletar
@@ -100,21 +100,24 @@ def analisar_info():
         query = "SELECT COUNT (DISTINCT situacao) FROM formulario"
         cur.execute(query)
         info = cur.fetchall()
-        #corre toda a lista da info e mandar para a lista_apresentar
+        # corre toda a lista da info e mandar para a lista_apresentar
         for i in info:
             lista_coluna_analisar.append(i)
     return lista_coluna_analisar
+
 
 tb_login_vars = ['nome', 'cpf', 'email', 'login', 'senha']
 tb_plano_vars = ['nome', 'id_login']
 tb_casoteste_vars = ['fase_desenvolvimento', 'fase_teste', 'id_plano']
 tb_abordagem_vars = ['descricao', 'id_caso']
 tb_artefatos_vars = ['entrada', 'saida', 'id_caso']
-tb_projeto_vars = ['nome', 'requisitante', 'gerente_projeto', 'id_plano', 'cenario_operacional']
+tb_projeto_vars = ['nome', 'requisitante',
+                   'gerente_projeto', 'id_plano', 'cenario_operacional']
 tb_marcos_vars = ['descricao', 'id_projeto']
 tb_premissas_vars = ['descricao', 'id_plano']
 tb_recursos_vars = ['tipo_recurso', 'quantidade', 'descricao', 'id_projeto']
 tb_recursoshumanos_vars = ['nome', 'papel', 'responsabilidade', 'id_projeto']
-tb_relatorios_vars = ['tipo_relatorio', 'objetivo', 'destinatario', 'periodicidade', 'id_projeto']
+tb_relatorios_vars = ['tipo_relatorio', 'objetivo',
+                      'destinatario', 'periodicidade', 'id_projeto']
 tb_restricoes_vars = ['descricao', 'id_plano']
 tb_riscos_vars = ['descricao', 'id_projeto']

@@ -15,8 +15,8 @@ janela.configure(bg="#04345C")
 
 
 def verificar_login():
-    usuario = caixa_texto_usuario.get("1.0", "end-1c")
-    senha = caixa_texto_senha.get("1.0", "end-1c")
+    usuario = caixa_texto_usuario.get()
+    senha = caixa_texto_senha.get()
 
     verificar = verificar_cadastro(usuario, senha)
     if verificar == True:
@@ -24,11 +24,10 @@ def verificar_login():
         import tela01
         janela.destroy()
         tela01.tela_01()
-        
 
     else:
         messagebox.showerror("Erro", "Usuario ou Senha incorreto!")
-    
+
 
 # backgraud
 imagem = PhotoImage(file="img//3.png")
@@ -63,7 +62,7 @@ labelusuario = tk.Label(text="Usuário:", fg="#6BD4CD",
                         font=("Arial", 20), bg="#195473")
 labelusuario.place(relx=valorx, rely=valory+0.12, relwidth=.08, relheight=.06)
 
-caixa_texto_usuario = tk.Text(width=10, height=5, bg="#6BD4CD")
+caixa_texto_usuario = tk.Entry(janela, width=10, bg="#6BD4CD")
 caixa_texto_usuario.place(relx=valorx, rely=valory +
                           0.2, relwidth=.25, relheight=.06)
 
@@ -72,7 +71,7 @@ labelsenha = tk.Label(text="Senha:", fg="#6BD4CD",
                       font=("Arial", 20), bg="#195473")
 labelsenha.place(relx=valorx, rely=valory+0.27, relwidth=.08, relheight=.06)
 
-caixa_texto_senha = tk.Text(width=10, height=5, bg="#6BD4CD")
+caixa_texto_senha = tk.Entry(width=10, bg="#6BD4CD")
 caixa_texto_senha.place(relx=valorx, rely=valory+0.35,
                         relwidth=.25, relheight=.06)
 
